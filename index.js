@@ -19,7 +19,7 @@ app.use(
     secret: process.env.SECRET_KEY || "your-secret-key", // Change this to a strong secret
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true }, // Set to true if using HTTPS
+    cookie: { secure: false }, // Set to true if using HTTPS
   })
 );
 
