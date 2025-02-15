@@ -39,3 +39,6 @@ app.use("/", checkAuth, staticRoute);
 app.listen(process.env.PORT, () =>
   console.log(`server started at http://localhost:${process.env.PORT}`)
 );
+
+
+
