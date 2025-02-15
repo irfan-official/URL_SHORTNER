@@ -14,6 +14,9 @@ export async function postCreateMiddleware(req, res, next) {
   try {
     const response = await fetch(req.body.url);
     if (response.ok) {
+      res.locals.id = req.flash("id");
+
+      console.log("req.local.id ==== ", res.locals.id[0]);
       next();
     } else {
       return res.status(404).json({ error: "not valid url" });
@@ -34,10 +37,11 @@ export async function createURL(req, res) {
       redirectURL: req.body.url,
       createdBy: user._id,
     });
-    const allUrls = await URL.find({ createdBy: user._id });
-    return res.status(200).render("home", { id: shortId, urls: allUrls });
-    // .status(200)
-    // .json({ shortId: shortId, newURL: `http://localhost:8000/${shortId}` });
+    req.flash("id", shortId);
+    console.log("req.flash === ", req.flash);
+    //const allUrls = await URL.find({ createdBy: user._id }); // problems 1
+    //return res.status(200).render("home", { id: shortId, urls: allUrls }); // problems2
+    return res.redirect("/");
   } catch (err) {
     return res.status(400).json({ error: "failed to create short URL" });
   }

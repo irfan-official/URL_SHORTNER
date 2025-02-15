@@ -7,7 +7,10 @@ export async function def(req, res) {
     return res.status(200).redirect("/user/login");
   }
   const allurls = await URL.find({ createdBy: req.user._id }); //createdBy: req.user._id
-  return res.status(200).render("home", { urls: allurls });
+
+  return res
+    .status(200)
+    .render("home", { urls: allurls, id: req.flash("id")[0] });
 }
 export async function getURL(req, res) {
   try {
