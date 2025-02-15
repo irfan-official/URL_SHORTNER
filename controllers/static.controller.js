@@ -21,8 +21,7 @@ export async function getURL(req, res) {
     );
 
     try {
-      //const response = await axios.get(storedUrl.redirectURL);
-      res.status(200).render("data", { data: storedUrl.redirectURL });
+      res.status(200).redirect(storedUrl.redirectURL);
       //res.status(200).send(response.data);
     } catch (err) {
       console.log(err.message);
