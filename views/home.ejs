@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen w-full bg-zinc-700 flex flex-col gap-10 items-center justify-center"
+  >
+    <div class="flex flex-col justify-center gap-10 w-2/5">
+      <h1 class="text-center text-4xl text-white mt-20">URL Shortner</h1>
+      <form
+        class="flex gap-4 w-full justify-center"
+        action="/url"
+        method="post"
+      >
+        <input
+          class="px-3 rounded-sm w-2/3 bg-slate-700 text-white border border-slate-600"
+          placeholder="Enter your url"
+          name="url"
+          type="text"
+          required
+        />
+        <button
+          type="submit"
+          class="px-5 py-3 rounded-lg bg-zinc-500 text-lime-200 border font-semibold border-slate-600"
+        >
+          Generate
+        </button>
+      </form>
+      <% if (locals.id) {%>
+
+      <div class="border flex gap-4 px-3 py-1">
+        <p class="text-orange-500 inline">URL GEnerated:</p>
+        <a
+          class="text-lime-500"
+          href="http://localhost:<%=process.env.PORT%>/<%=id%>"
+          target="_blank"
+          >http://localhost:<%=process.env.PORT%>/<%=id%></a
+        >
+      </div>
+
+      <% } %>
+    </div>
+    <div class="c">
+      <% if (locals.urls.length >= 1) {%>
+      <h2 class="text-3xl text-orange-500">Generated Urls:</h2>
+      <table class="text-white">
+        <thead class="border">
+          <th class="border-r border-dotted px-3">S. No</th>
+          <th class="py-2 border-r border-dotted">url</th>
+          <th class="border-r border-dotted">Poining</th>
+          <th class="border-r border-dotted">Redirect url</th>
+        </thead>
+        <tbody class="">
+          <% urls.forEach((url, index) => { %>
+          <tr class="border"></tr>
+          <td class="border px-3 py-2"><%= index + 1 %></td>
+          <td class="border-r border-b px-3">
+            http://localhost:<%=process.env.PORT%>/<%= url.shortId %>
+          </td>
+          <td class="border-r border-b px-3">----------></td>
+          <td class="border-r border-b px-3">
+            <a href="<%= url.redirectURL %>" target="_blank"
+              ><%= url.redirectURL %></a
+            >
+          </td>
+
+          <% }) %>
+        </tbody>
+      </table>
+
+      <% } %>
+    </div>
+  </body>
+</html>
