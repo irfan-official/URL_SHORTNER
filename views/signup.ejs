@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="w-full min-h-screen bg-zinc-700 text-white p-4 flex flex-col justify-center items-center"
+  >
+    <h1 class="text-4xl font-semibold mb-4 text-slate-400 select-none">
+      Sign Up
+    </h1>
+    <form
+      class="flex flex-col gap-5 border w-2/5 p-5 rounded-md"
+      action="/user"
+      method="post"
+    >
+      <input
+        class="p-2 rounded-md text-white bg-slate-600"
+        type="text"
+        placeholder="Enter your name"
+        name="name"
+        required
+      />
+      <input
+        class="p-2 rounded-md text-white bg-slate-600"
+        type="text"
+        placeholder="Enter your email"
+        name="email"
+        required
+      />
+      <input
+        class="p-2 rounded-md text-white bg-slate-600"
+        type="text"
+        placeholder="Enter your password"
+        name="password"
+        required
+      />
+      <button
+        class="px-3 py-2 text-white bg-zinc-500 font-semibold"
+        type="submit"
+      >
+        SignUp
+      </button>
+    </form>
+  </body>
+</html>
