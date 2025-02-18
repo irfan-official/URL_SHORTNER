@@ -45,5 +45,8 @@
         SignUp
       </button>
     </form>
+    <% if (errorMessage) { %>
+    <p class="mt-3 text-red-500 font-semibold text-lg"><%= errorMessage %></p>
+    <% } %>
   </body>
 </html>

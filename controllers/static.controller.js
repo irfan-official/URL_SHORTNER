@@ -49,10 +49,3 @@ export async function fetchMiddleware(req, res, next) {
   }
 }
 
-export async function signup(req, res) {
-  return res.status(200).render("signup");
-}
-
-export async function login(req, res) {
-  return res.status(200).render("login");
-}

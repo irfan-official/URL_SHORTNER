@@ -3,53 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Email verification</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
     class="w-full min-h-screen bg-zinc-700 text-white p-4 flex flex-col justify-center items-center"
   >
     <h1 class="text-4xl font-semibold mb-4 text-slate-400 select-none">
-      Login
+      Email Verification
     </h1>
     <form
       class="flex flex-col gap-5 border w-2/5 p-5 rounded-md"
-      action="/user/login"
+      action="/user/email-verification"
       method="post"
     >
       <input
-        class="p-2 rounded-md text-white bg-slate-600"
+        class="p-2 rounded-md text-white bg-slate-600 select-none outline-none"
         type="text"
         placeholder="Enter your email"
         name="email"
+        value="<%= email %>"
         required
+        readonly
       />
       <input
         class="p-2 rounded-md text-white bg-slate-600"
         type="text"
-        placeholder="Enter your password"
-        name="password"
+        placeholder="Enter your code sent in your email address"
+        name="email_code"
         required
       />
+      <% if (errorMessage) { %>
+      <p class="text-red-500 font-semibold text-lg"><%= errorMessage %></p>
+      <% } %>
+
       <button
         class="px-3 py-2 text-white bg-zinc-500 font-semibold"
         type="submit"
       >
-        Login
+        SUBMIT
       </button>
-      <a
-        href="/user/signup"
-        class="px-3 py-2 text-white bg-zinc-500 font-semibold text-center"
-      >
-        SignUp
-      </a>
     </form>
-    <% if (errorMessage) {%>
-
-    <div class="py-1">
-      <p class="mt-3 text-red-500 font-semibold text-lg"><%= errorMessage %></p>
-    </div>
-
-    <% } %>
+    <a
+      class="mt-3 border-b border-b-orange-600 text-orange-600 font-bold text-"
+      href="http://localhost:8000/user/signup"
+      >Back to signup page</a
+    >
   </body>
 </html>
